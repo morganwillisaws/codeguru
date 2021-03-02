@@ -1,8 +1,13 @@
 package com.company;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
+
+    // not concurrency safe....
+    private static Map<String,String> map = new HashMap<>();
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -16,12 +21,11 @@ public class Main {
             //this could be an infinite loop!
             //String comparison using ==
             if(name == "Morgan") {
-                break;
+                map.put(name,"test value");
             }
 
         } while(true);
 
-        System.out.println("Please select Rock, Paper, or Scissors");
 
     }
 }
