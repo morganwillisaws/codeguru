@@ -3,11 +3,12 @@ package com.company;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 public class Main {
 
     // not concurrency safe....
-    private static Map<String,String> map = new HashMap<>();
+    private static Map<String,String> map = new TreeMap<>();
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
