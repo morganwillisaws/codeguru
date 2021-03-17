@@ -6,18 +6,19 @@ import threading
 class FakeDatabase:
     def __init__(self):
         self.value = 0
-
+        self._lock = threading.Lock()
 
     def update(self, name):
         print("Thread ", name, "is reading the DB value, value is currently: ", self.value)
-
-        print("Thread ", name, "has received the lock")
-        local_copy = self.value
-        local_copy += 1
-        time.sleep(0.1)
-        self.value = local_copy
-        print("Thread ", name, "has modified the DB value")
-        print("Thread ", name, " is releasing the lock")
+        with self._lock:
+            threading.aquire()
+            print("Thread ", name, "has received the lock")
+            local_copy = self.value
+            local_copy += 1
+            time.sleep(0.1)
+            self.value = local_copy
+            print("Thread ", name, "has modified the DB value")
+            print("Thread ", name, " is releasing the lock")
 
 
 database = FakeDatabase()
