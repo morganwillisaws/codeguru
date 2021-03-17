@@ -11,7 +11,7 @@ public class DataRace {
 
         public static void main(String... args) {
             ForkJoinPool.commonPool().execute(DataRace::raiseFlag);
-            while (!flag);//r_i, where i ∈ [1, k), k may be infinite
-            System.out.print(flag);//r
+            while (!flag);
+            System.out.print(flag);
         }
     }
