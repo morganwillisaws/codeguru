@@ -1,45 +1,43 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 public class MapConcurrent {
-    List<IHat> hats = new ArrayList<>();
+    HashMap<String, Hat> hats = new HashMap<String, Hat>();
 
-    public void manageHats() {
-        hats.add(new Ushanka()); // that one has ear flaps
-        hats.add(new Fedora());
-        hats.add(new Sombrero());
-        for (IHat hat : hats) {
-            if (hat.hasEarFlaps()) {
-                hats.remove(hat);
-            }
-        }
+    public void addNewHat(Hat hat) {
+        hats.put(hat.getName(), hat);
     }
 }
 
-interface IHat{
-    boolean hasEarFlaps();
-}
+abstract class Hat{
+    String name;
+    String maker;
+    String material;
 
-class Ushanka implements IHat {
-    @Override
-    public boolean hasEarFlaps() {
-        return true;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getMaker() {
+        return maker;
+    }
+
+    public void setMaker(String maker) {
+        this.maker = maker;
+    }
+
+    public String getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(String material) {
+        this.material = material;
     }
 }
 
-class Fedora implements IHat {
-    @Override
-    public boolean hasEarFlaps() {
-        return false;
-    }
-}
-
-class Sombrero implements IHat {
-    @Override
-    public boolean hasEarFlaps() {
-        return false;
-    }
-}
 
