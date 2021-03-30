@@ -16,8 +16,8 @@ def kickoff_subprocess(cmd):
     file.write(process_output)
 
 def upload_output_to_S3(filename):
-    with open("example", "rb") as f:
-        s3.upload_fileobj(f, "BUCKET_NAME", "OBJECT_NAME")
+    f = open("example", "rb")
+    s3.upload_fileobj(f, "BUCKET_NAME", "OBJECT_NAME")
 
 if __name__ == "__main__":
    main(sys.argv[1:])
